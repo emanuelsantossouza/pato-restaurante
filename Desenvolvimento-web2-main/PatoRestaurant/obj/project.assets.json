@@ -2341,11 +2341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\etec\\Desktop\\Desenvolvimento-web2-main\\PatoRestaurant\\PatoRestaurant.csproj",
+      "projectUniqueName": "C:\\Users\\etec\\Desktop\\pato-restaurante\\Desenvolvimento-web2-main\\PatoRestaurant\\PatoRestaurant.csproj",
       "projectName": "PatoRestaurant",
-      "projectPath": "C:\\Users\\etec\\Desktop\\Desenvolvimento-web2-main\\PatoRestaurant\\PatoRestaurant.csproj",
+      "projectPath": "C:\\Users\\etec\\Desktop\\pato-restaurante\\Desenvolvimento-web2-main\\PatoRestaurant\\PatoRestaurant.csproj",
       "packagesPath": "C:\\Users\\etec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\etec\\Desktop\\Desenvolvimento-web2-main\\PatoRestaurant\\obj\\",
+      "outputPath": "C:\\Users\\etec\\Desktop\\pato-restaurante\\Desenvolvimento-web2-main\\PatoRestaurant\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\etec\\AppData\\Roaming\\NuGet\\NuGet.Config",
