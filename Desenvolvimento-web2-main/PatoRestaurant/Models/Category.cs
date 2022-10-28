@@ -23,7 +23,5 @@ namespace PatoRestaurant.Models
         [StringLength(400)]
         public string Banner { get; set; }
 
-
-
     }
 }
