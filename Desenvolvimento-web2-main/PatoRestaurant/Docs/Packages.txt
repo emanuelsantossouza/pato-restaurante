@@ -10,6 +10,7 @@ Para testar se tem a ferramenta de migração:
 
 Para instalar a ferramenta de migração:
     dotnet tool install --global dotnet-ef
+    dotnet tool update --global dotnet-ef
 
 Para criar uma migração:
 1º - No terminal executar um: dotnet build
@@ -19,5 +20,19 @@ Para criar uma migração:
 3º Usar o comando para atualizar o banco de dados
     dotnet ef database update
 
+Para Realizar o scaffoding do Identity
 
-Nuget busca qualquer ferramenta
+-- Opcional
+dotnet aspnet-codegenerator Identity -h
+dotnet aspnet-codegenerator Identity -listFilles
+
+dotnet build
+
+-- 1º Passo
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+-- 2º Passo -- Determine as páginas
+dotnet aspnet-codegenerator Identity -dc PatoRestaurant.Data.ApplicationDbContext -u PatoRestauran.Models.ApplicationUser --files "Account.Login;Account.Logout;Account.Register"
+
+
+Nuget busca qualquer ferramenta 

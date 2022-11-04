@@ -28,7 +28,7 @@ namespace PatoRestaurant.Models
         [StringLength(400)]
         public string Image { get; set; }
 
-        [Display(nameof = "Nota")] 
+        [Display(Name = "Nota")] 
         [Required(ErrorMessage = "Informe a {0}")]
         public byte Rating { get ; set ; }
     }

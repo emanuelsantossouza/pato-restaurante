@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace PatoRestaurant.Models
 {
     [Table("SocialEvent")]
-    public class SocialEventy
+    public class SocialEvent
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
