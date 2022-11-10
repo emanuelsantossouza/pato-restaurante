@@ -32,7 +32,7 @@ dotnet build
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 
 -- 2º Passo -- Determine as páginas
-dotnet aspnet-codegenerator Identity -dc PatoRestaurant.Data.ApplicationDbContext -u PatoRestauran.Models.ApplicationUser --files "Account.Login;Account.Logout;Account.Register"
+dotnet aspnet-codegenerator Identity --force -dc PatoRestaurant.Data.ApplicationDbContext --files "Account.AccessDenied;Account.Login;Account.Logout;Account.Register"
 
 
 Nuget busca qualquer ferramenta 
