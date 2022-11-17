@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace PatoRestaurant.Data;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser> 
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
@@ -12,16 +13,60 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-    public DbSet<Category> Categories { get; set ;}
-    public DbSet<Product> Products { get; set ;}
-    public DbSet<Reservation> Reservations { get; set ;}
-    public DbSet<Review> Reviews { get; set ;}
-    public DbSet<SocialEvent> SocialEvents { get; set ; }
-    public DbSet<StatusReservation> StatusReservations { get; set ;}
-    
-    protected override void OnModelCreating(ModelBuilder builder) 
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<SocialEvent> SocialEvents { get; set; }
+    public DbSet<StatusReservation> StatusReservations { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        #region Seed Roles
+        List<IdentityRole> listRoles = new()
+        {
+            new IdentityRole{
+                Id = Guid.NewGuid().ToString(),
+                Name = "Administrador",
+                NormalizedName = "ADMINISTRADOR"
+            },
+            new IdentityRole{
+                Id = Guid.NewGuid().ToString(),
+                Name = "Usuário",
+                NormalizedName = "USUÁRIO"
+            }
+        };
+
+        builder.Entity<IdentityRole>().HasData(listRoles);
+        #endregion
+
+        #region Seed ApplicationUser - Admin
+        var userId = Guid.NewGuid().ToString();
+        var hash = new PasswordHasher<ApplicationUser>();
+        builder.Entity<ApplicationUser>().HasData(
+            new ApplicationUser
+            {
+                Id = userId,
+                Name = "Emanuel Santos Souza de Jesus",
+                UserName = "emanuel.jesus3@etec.sp.gov.br",
+                NormalizedUserName = "EMANUEL.JESUS3@ETEC.SP.GOV.BR",
+                EmailConfirmed = true,
+                PasswordHash = hash.HashPassword(null, "123"),
+                SecurityStamp =hash.GetHashCode().ToString(),
+                ProfilePicture = @"\img\avatar.png"
+            }
+        );
+
+        builder.Entity<IdentityUserRole<string>>().HasData(
+            new IdentityUserRole<string>{
+                UserId = userId, 
+                RoleId = listRoles[0].Id
+            }
+        );
+
+        #endregion
         #region Seed StatusReservation
         List<StatusReservation> listStatusReservation = new()
         {
@@ -73,7 +118,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 Id = 3,
                 Name = "Bebidas"
             },
-            
+
             new Category()
             {
                 Id = 4,
@@ -93,12 +138,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         builder.Entity<Category>().HasData(listCategory);
         #endregion
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
 }
